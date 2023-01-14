@@ -1,0 +1,69 @@
+﻿@*@using _140123_Homework.ViewModels
+
+@model EmployeeTerritoryViewModel
+
+<h3>EmployeeTerritoryViewModel</h3>
+
+<table>
+    <thead>
+    <th> @Html.DisplayNameFor(model => model.EmployeeId)</th>
+    <th>@Html.DisplayNameFor(model => model.TerritoryId)</th>
+    <th>  @Html.DisplayNameFor(model => model.TerritoryDescription)</th>
+
+    </thead>
+    <tbody>
+    
+            <tr>
+                     <td>
+               @Model.EmployeeId
+            </td>
+                      <td>
+               @Model.TerritoryDescription
+            </td>
+                <td>
+                @Model.TerritoryId
+                </td>
+            </tr>
+
+  
+    </tbody>
+    
+</table>*@
+
+@model IEnumerable<_140123_Homework.Models.Territory>
+
+
+@{
+    ViewData["Title"] = "Territory";
+}
+
+
+<h1>Territory</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TerritoryDescription)
+            </th>
+            <th>
+              
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TerritoryDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employees)
+                </td>
+
+        </tr>
+}
+    </tbody>
+</table>
+<script></script>

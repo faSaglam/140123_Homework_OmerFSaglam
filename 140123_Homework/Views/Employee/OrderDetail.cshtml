@@ -1,0 +1,63 @@
+﻿@model IEnumerable<_140123_Homework.Models.OrderDetail>
+
+@{
+    ViewData["Title"] = "OrderDetail";
+}
+
+<h1>OrderDetail</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discount)
+            </th>
+            <th>
+                  UnitPrice*Quantity*(1-Discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product)
+            </th>
+            @*<th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+          
+                @{
+                    decimal x = item.UnitPrice * item.Quantity;
+                    float x2 = (float)x;
+                   
+                    float sum = x2 * (1 - item.Discount);
+                }
+                <td>@(sum)</td>
+            <td>
+               
+                    @Html.ActionLink( "Product", "Product", new {OrderId = item.OrderId } )
+            </td>
+       @*     <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>*@
+            
+        </tr>
+}
+    </tbody>
+</table>
